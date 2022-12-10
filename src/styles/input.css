@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	* {
+		font-family: 'Avenir LT std';
+	}
+}
+
+@layer components {
+	.fieldSection {
+		@apply flex flex-row bg-white/10 backdrop-blur outline-blue-500 focus-within:outline px-6 py-3 rounded-2xl w-full;
+	}
+	.fieldIcon {
+		@apply flex w-6;
+	}
+	.fieldInput {
+		@apply flex flex-col justify-center w-full;
+	}
+	.fieldComponent {
+		@apply bg-transparent outline-none text-white;
+	}
+	.invisiblePassword,
+	.visiblePassword {
+		@apply w-full;
+	}
+}
+
+@font-face {
+	font-family: 'Avenir LT std';
+	src: url('../assets/fonts/avenir_ff/AvenirLTStd-Book.otf') format('opentype');
+	font-weight: 100;
+}
+
+@font-face {
+	font-family: 'Avenir LT std';
+	src: url('../assets/fonts/avenir_ff/AvenirLTStd-Roman.otf') format('opentype');
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'Avenir LT std';
+	src: url('../assets/fonts/avenir_ff/AvenirLTStd-Black.otf') format('opentype');
+	font-weight: bold;
+}
