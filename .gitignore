@@ -1,15 +1,19 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/.pnp
-.pnp.js
+/public/node_modules
+/public/node_modules/.bin
+/public/node_modules/.cache
+/public/node_modules/.pnpm
+/server/node_modules
+/public/.pnp
+/public.pnp.js
 
 # testing
-/coverage
+/public/coverage
 
 # production
-/build
+/public/build
 
 # misc
 .DS_Store
@@ -21,3 +25,66 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.vscode/settings.json
+src/App.tsx
+src/index.tsx
+src/react-app-env.d.ts
+src/assets/fonts/avenir_ff/AvenirLTStd-Black.otf
+src/assets/fonts/avenir_ff/AvenirLTStd-Book.otf
+src/assets/fonts/avenir_ff/AvenirLTStd-Roman.otf
+src/assets/images/background/Canyon.webp
+src/assets/images/icon/eye-off.svg
+src/assets/images/icon/eye.svg
+src/assets/images/icon/lock.svg
+src/assets/images/icon/mail.svg
+src/assets/images/icon/user-black.svg
+src/assets/images/icon/user.svg
+src/components/UI/Button.tsx
+src/components/UI/forms/InputField.tsx
+src/components/loginForm/LoginForm.tsx
+src/components/loginForm/LoginInitialValues.ts
+src/components/loginForm/LoginSchema.tsx
+src/components/registerForm/InitialValues.ts
+src/components/registerForm/RegisterForm.tsx
+src/components/registerForm/RegisterSchema.tsx
+src/components/updateUser/SetAvatar.tsx
+src/hooks/useToken.tsx
+src/pages/Inbox.tsx
+src/pages/Login.tsx
+src/pages/Register.tsx
+src/styles/input.css
+src/styles/output.css
+src/utils/GetBase64.ts
+src/utils/getFileFromBase64.ts
+src/utils/RoutesAPI.ts
+src/App.tsx
+src/index.tsx
+src/react-app-env.d.ts
+src/assets/fonts/avenir_ff/AvenirLTStd-Black.otf
+src/assets/fonts/avenir_ff/AvenirLTStd-Book.otf
+src/assets/fonts/avenir_ff/AvenirLTStd-Roman.otf
+src/assets/images/background/Canyon.webp
+src/assets/images/icon/eye-off.svg
+src/assets/images/icon/eye.svg
+src/assets/images/icon/lock.svg
+src/assets/images/icon/mail.svg
+src/assets/images/icon/user-black.svg
+src/assets/images/icon/user.svg
+src/components/UI/Button.tsx
+src/components/UI/forms/InputField.tsx
+src/components/loginForm/LoginForm.tsx
+src/components/loginForm/LoginInitialValues.ts
+src/components/loginForm/LoginSchema.tsx
+src/components/registerForm/InitialValues.ts
+src/components/registerForm/RegisterForm.tsx
+src/components/registerForm/RegisterSchema.tsx
+src/components/updateUser/SetAvatar.tsx
+src/hooks/useToken.tsx
+src/pages/Inbox.tsx
+src/pages/Login.tsx
+src/pages/Register.tsx
+src/styles/input.css
+src/styles/output.css
+src/utils/GetBase64.ts
+src/utils/getFileFromBase64.ts
+src/utils/RoutesAPI.ts
