@@ -11,9 +11,13 @@ const setAvatar = async (req: any, res: any, next: any) => {
 		const { bufferedImage, authToken }: user = req.body
 		const token = authToken.authToken
 
-		if (await authentification(token)) {
-			const res = await User.findOneAndUpdate(
-				{ 'authTokens.authToken': token },
+		// Vérification de l'authentification de l'utilisateur
+		const result = await authentification(token)
+		const { user, userId } = result!
+
+		if (user) {
+			const userToUpdate = await User.findOneAndUpdate(
+				{ _id: userId },
 				{ avatarImage: bufferedImage, isAvatarImageSet: true },
 			)
 		} else {

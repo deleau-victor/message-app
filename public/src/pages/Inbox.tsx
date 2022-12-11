@@ -50,8 +50,11 @@ const Inbox = () => {
 			{user ? (
 				<>
 					<div>Hello {user.firstName}</div>
-					<SetAvatar></SetAvatar>
-					<div className="h-16 w-16 rounded-full overflow-hidden border border-white">
+					<SetAvatar
+						avatar={user.avatarImage}
+						isAvatarSet={user.isAvatarImageSet}
+					></SetAvatar>
+					<div className="h-16 w-16 rounded-full overflow-hidden border border-white flex">
 						<img
 							src={
 								user.isAvatarImageSet

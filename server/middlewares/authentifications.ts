@@ -3,10 +3,6 @@ import jwt from 'jsonwebtoken'
 import * as dotenv from 'dotenv'
 dotenv.config()
 
-type user = {
-	authToken: string
-}
-
 const authentification = async (token: string) => {
 	try {
 		// Vérification du token d'authentification
@@ -18,7 +14,7 @@ const authentification = async (token: string) => {
 		})
 
 		if (!user) throw new Error()
-		return true
+		return { user: true, userId: decodedToken._id }
 	} catch (error) {
 		console.log(error)
 	}
