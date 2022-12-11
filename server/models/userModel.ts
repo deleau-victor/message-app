@@ -83,6 +83,8 @@ const userSchema = new Schema<IUser>({
 userSchema.methods.toJSON = function () {
 	const user = this.toObject()
 	delete user.password
+	delete user.acceptTerms
+	delete user._id
 	return user
 }
 

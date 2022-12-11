@@ -8,17 +8,14 @@ type user = {
 
 const setAvatar = async (req: any, res: any, next: any) => {
 	try {
-		console.log(req.body)
-
 		const { bufferedImage, authToken }: user = req.body
 		const token = authToken.authToken
 
 		if (await authentification(token)) {
 			const res = await User.findOneAndUpdate(
 				{ 'authTokens.authToken': token },
-				{ avatarImage: bufferedImage },
+				{ avatarImage: bufferedImage, isAvatarImageSet: true },
 			)
-			console.log(res)
 		} else {
 			return res.json({ status: false })
 		}

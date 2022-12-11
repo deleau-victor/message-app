@@ -3077,6 +3077,10 @@ html {
   height: 4rem;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .min-h-\[92px\] {
   min-height: 92px;
 }
@@ -3093,6 +3097,18 @@ html {
 
 .w-16 {
   width: 4rem;
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
 }
 
 .grid-cols-field {
@@ -3136,9 +3152,22 @@ html {
   border-width: 1px;
 }
 
+.border-4 {
+  border-width: 4px;
+}
+
+.border-dashed {
+  border-style: dashed;
+}
+
 .border-black {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
 .bg-\[\#272a37\] {
@@ -3209,4 +3238,9 @@ html {
   src: url('../assets/fonts/avenir_ff/AvenirLTStd-Black.otf') format('opentype');
 
   font-weight: bold;
+}
+
+.dark .dark\:border-violet-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(167 139 250 / var(--tw-border-opacity));
 }

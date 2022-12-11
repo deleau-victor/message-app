@@ -4,7 +4,7 @@ import { setAvatarRoute } from '../../utils/RoutesAPI'
 import userIcon from '../../assets/images/icon/user-black.svg'
 import getBase64 from '../../utils/GetBase64'
 import axios from 'axios'
-import authToken from '../../hooks/useToken'
+import getAuthToken from '../../utils/getAuthToken'
 
 const SetAvatar = () => {
 	const handleFiles = async (event: ChangeEvent<HTMLInputElement>) => {
@@ -18,6 +18,8 @@ const SetAvatar = () => {
 		let label = event.target.previousSibling!
 		label.childNodes[0].remove()
 		label.appendChild(img)
+
+		let authToken = await getAuthToken()
 
 		const { data } = await axios.post(setAvatarRoute, {
 			bufferedImage: bufferedImage,
