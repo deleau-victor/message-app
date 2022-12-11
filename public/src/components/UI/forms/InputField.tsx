@@ -1,5 +1,5 @@
 import { ErrorMessage, Field } from 'formik'
-import React, { FC, MouseEvent, useEffect, useState } from 'react'
+import React, { FC, MouseEvent, useState } from 'react'
 import eyeIcon from '../../../assets/images/icon/eye.svg'
 import eyeoffIcon from '../../../assets/images/icon/eye-off.svg'
 

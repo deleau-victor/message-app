@@ -6,6 +6,10 @@ import getBase64 from '../../utils/GetBase64'
 import axios from 'axios'
 import getAuthToken from '../../utils/getAuthToken'
 import getFileFromBase64 from '../../utils/getFileFromBase64'
+import fetchUser from '../../hooks/fetchUser'
+import { useUser } from '../../context/UserContext'
+import { useNavigate } from 'react-router-dom'
+import { render } from 'react-dom'
 
 type Props = {
 	isAvatarSet: boolean
@@ -14,10 +18,11 @@ type Props = {
 
 const SetAvatar: FC<Props> = ({ isAvatarSet, avatar }) => {
 	const [isAvatarSend, setIsAvatarSend] = useState(true)
+	const { setUser } = useUser()!
+	const navigate = useNavigate()
 
 	const handleFiles = async (event: ChangeEvent<HTMLInputElement>) => {
-		let label = event.target.previousSibling!
-
+		let label = event.target.parentNode!.childNodes[1]
 		// Recupération de l'image et transformation en base64
 		const file = event.currentTarget.files![0]
 		let bufferedImage = await getBase64(file)
@@ -32,10 +37,12 @@ const SetAvatar: FC<Props> = ({ isAvatarSet, avatar }) => {
 		if (data.status) {
 			setIsAvatarSend(true)
 			let img = document.createElement('img')
-			img.classList.add('object-cover')
+			img.classList.add(`${isAvatarSend ? 'z-30' : 'z-60'}`)
 			img.src = window.URL.createObjectURL(file)
-			label.childNodes[0].remove()
+
+			label.childNodes[1].remove()
 			label.appendChild(img)
+			fetchUser(navigate, setUser)
 		} else {
 			setIsAvatarSend(false)
 		}
@@ -45,24 +52,23 @@ const SetAvatar: FC<Props> = ({ isAvatarSet, avatar }) => {
 		<>
 			<label
 				htmlFor="avatar"
-				className="h-16 w-16 flex rounded-full overflow-hidden border border-black"
+				className="h-16 w-16 flex rounded-full overflow-hidden border border-black justify-center items-center relative"
 			>
-				{' '}
-				{!isAvatarSend ? (
-					<div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin"></div>
-				) : (
-					<img
-						src={
-							isAvatarSet
-								? window.URL.createObjectURL(
-										getFileFromBase64(avatar, 'UserProfile'),
-								  )
-								: userDefault
-						}
-						alt="avatar utilisateur"
-						className="object-cover"
-					/>
-				)}
+				<div
+					className={`w-16 h-16 border-4 border-dashed rounded-full animate-spin absolute
+						${isAvatarSend ? 'left-[300px]' : ''}`}
+				></div>
+				<img
+					src={
+						isAvatarSet
+							? window.URL.createObjectURL(
+									getFileFromBase64(avatar, 'UserProfile'),
+							  )
+							: userDefault
+					}
+					alt="avatar utilisateur"
+					className={isAvatarSend ? '' : 'left-[300px]'}
+				/>
 			</label>
 			<input
 				type="file"
@@ -72,6 +78,9 @@ const SetAvatar: FC<Props> = ({ isAvatarSet, avatar }) => {
 				onChange={(event) => handleFiles(event)}
 				className="hidden"
 			/>
+			<label htmlFor="avatar" className="mt-4">
+				Changer d'avatar
+			</label>
 
 			<ToastContainer />
 		</>

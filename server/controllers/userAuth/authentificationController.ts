@@ -18,7 +18,9 @@ const authentification = async (req: any, res: any, next: any) => {
 			'authTokens.authToken': authToken,
 		})
 
-		if (!fetchUser) throw new Error()
+		if (!fetchUser) {
+			return res.json({ status: false })
+		}
 		let user = fetchUser.toObject()
 		delete user.authTokens
 

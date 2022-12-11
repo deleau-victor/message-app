@@ -59,12 +59,13 @@ const RegisterForm = () => {
 				validationSchema={RegisterSchema}
 				onSubmit={(values) => handleSubmit(values)}
 			>
-				{() => (
+				{({}) => (
 					<Form className="flex flex-col w-full mx-auto items-center mt-4">
 						<div className="grid grid-cols-field gap-y-2 gap-x-6">
 							{/* Inputs */}
 							<InputField name="firstName" label="prénom" img={userIcon} />
 							<InputField name="lastName" label="nom" img={userIcon} />
+
 							<InputField
 								name="email"
 								label="email"
