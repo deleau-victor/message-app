@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { useUser } from '../../context/UserContext'
+import Button from '../UI/Button'
 import SetAvatar from './SetAvatar'
 
 type Props = {
@@ -19,6 +20,7 @@ const UserProfile: FC<Props> = ({ isUserProfileOpen, onClick }) => {
 						avatar={user!.avatarImage}
 						isAvatarSet={user!.isAvatarImageSet}
 					></SetAvatar>
+					<Button onClick={() => onClick()}>Close</Button>
 				</div>
 			) : (
 				''
